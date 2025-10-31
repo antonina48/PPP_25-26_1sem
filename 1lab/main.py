@@ -6,10 +6,10 @@
 def cinema_hall(row, rows_in_place):      #ряды(N) и места в рядах(M)
     hall=[]
     for a in range(row):
-        row=[]
+        row_list=[]
         for b in range(rows_in_place):
-            row.append(0)   #своб место
-        hall.append(row)
+            row_list.append(0)   #своб место
+        hall.append(row_list)
     return hall
 
 def count_place_in_hall(hall):
@@ -17,8 +17,8 @@ def count_place_in_hall(hall):
     for row in hall:
         row_str=""
         for seat in row:
-            row_str+=str(seat)+""
-    print()
+            row_str+=str(seat)+" "
+    print(row_str)
 
 def seatreservation(hall, need_seat):    #ф-ция на бронь подряд идущих мест
     total_rows=len(hall)
@@ -31,14 +31,13 @@ def seatreservation(hall, need_seat):    #ф-ция на бронь подряд
             if all_rows[number_seat]==0:   #если место свободно
                 if count_free_place==0:    #сли первое во множ
                     start=number_seat
-                    count_free_place+=1
+                count_free_place+=1
                     
             else:   #занятоо
                 count_free_place=0  #обнуление счёт
             if count_free_place==need_seat:  #подряд идущ
                 for a in range(start, start+need_seat):  #бронь подряж идущ
-                    hall[number_row]
-                    [i]=1
+                    hall[number_row][a]=1
                 return (number_row+1, start+1)  #счёт с единцы
     return None  #если ничо нет
 if __name__=="__main__":
@@ -51,5 +50,6 @@ if __name__=="__main__":
         print("не удалось забронировать")
     count_place_in_hall(cinema_hall_5)
 
+    
 #if __name__ == "__main__":
     pass # Ваш код здесь
